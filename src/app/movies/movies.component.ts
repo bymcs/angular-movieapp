@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Movie } from '../models/movie';
+import { MovieRepository } from '../models/movie.repository';
 
 @Component({
   selector: 'app-movies',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent {
+
+  title = "Film Listesi";
+
+  movies : Movie[];
+  movieRepository : MovieRepository;
+
+  constructor(){
+    this.movieRepository = new MovieRepository();
+    this.movies = this.movieRepository.getMovies();
+  }
+
 
 }
